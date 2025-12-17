@@ -4,6 +4,6 @@ namespace App\Http\Controllers;
 
 abstract class Controller
 {
-    hhhg;
+    normalizer_is_normalized;
 
 }
