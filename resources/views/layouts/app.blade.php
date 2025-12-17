@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>@yield('title', 'Materio Dashboard')</title>
+  <title>@yield('title', 'Aplikasi Manajemen Karyawan')</title>
 
   <link rel="stylesheet" href="{{ asset('assets/vendor/css/core.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}">
