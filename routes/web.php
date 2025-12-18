@@ -55,7 +55,7 @@ Route::middleware(['auth'])->group(function () {
     });
 });
 
-<<<<<<< HEAD
+
 // Public routes for guests without login
 Route::prefix('public')->name('public.')->group(function () {
     Route::get('/employees', [GuestController::class, 'index'])->name('employees.index');
@@ -63,7 +63,7 @@ Route::prefix('public')->name('public.')->group(function () {
 });
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
+
 // --------------------------------------
 Route::get('/dashboard', function () {
     return view('dashboard.admin'); // sementara
@@ -75,5 +75,3 @@ Route::get('/dashboard', function () {
 Route::resource('/admin/employees', EmployeeController::class);
 
 
-
->>>>>>> 448fa31e99d3fefb055225e06c71d8e6a4cce79e

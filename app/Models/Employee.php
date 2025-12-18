@@ -7,23 +7,6 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     protected $fillable = [
-<<<<<<< HEAD
-        'name',
-        'position',
-        'department',
-        'salary',
-        'status',
-        'photo',
-        'hire_date',
-        'email',
-        'phone',
-    ];
-
-    protected $casts = [
-        'salary' => 'decimal:2',
-        'hire_date' => 'date',
-    ];
-=======
         'user_id',
         'jabatan_id',
         'nama',
@@ -49,5 +32,4 @@ class Employee extends Model
     {
         return $this->hasMany(Leave::class);
     }
->>>>>>> 448fa31e99d3fefb055225e06c71d8e6a4cce79e
 }
