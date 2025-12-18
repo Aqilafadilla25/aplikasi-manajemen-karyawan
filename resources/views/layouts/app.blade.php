@@ -4,8 +4,14 @@
   <meta charset="UTF-8">
   <title>@yield('title', 'Aplikasi Manajemen Karyawan')</title>
 
+  {{-- Core CSS --}}
   <link rel="stylesheet" href="{{ asset('assets/vendor/css/core.css') }}">
+  <link rel="stylesheet" href="{{ asset('assets/vendor/css/theme-default.css') }}">
   <link rel="stylesheet" href="{{ asset('assets/css/demo.css') }}">
+
+  {{-- Helpers --}}
+  <script src="{{ asset('assets/vendor/js/helpers.js') }}"></script>
+  <script src="{{ asset('assets/js/config.js') }}"></script>
 </head>
 <body>
 
@@ -33,8 +39,9 @@
   </div>
 </div>
 
+{{-- Core JS --}}
 <script src="{{ asset('assets/vendor/libs/jquery/jquery.js') }}"></script>
-<script src="{{ asset('assets/vendor/js/bootstrap.js') }}"></script>
+<script src="{{ asset('assets/vendor/libs/bootstrap/bootstrap.js') }}"></script>
 <script src="{{ asset('assets/vendor/js/menu.js') }}"></script>
 
 @stack('scripts')
