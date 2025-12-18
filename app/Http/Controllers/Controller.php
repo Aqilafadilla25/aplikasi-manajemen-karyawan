@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+<<<<<<< HEAD
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
@@ -387,4 +388,12 @@ abstract class Controller extends BaseController
             return $this->apiErrorResponse('Bulk operation failed: ' . $e->getMessage(), 500);
         }
     }
+=======
+use Illuminate\Foundation\Bus\DispatchesJobs;
+use Illuminate\Foundation\Validation\ValidatesRequests;
+
+abstract class Controller
+{
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+>>>>>>> 448fa31e99d3fefb055225e06c71d8e6a4cce79e
 }

@@ -65,7 +65,7 @@
                     </svg>
                 </span>
             </span>
-            <span class="app-brand-text demo menu-text fw-semibold ms-2">Materio</span>
+            <span class="app-brand-text demo menu-text fw-semibold ms-2">NA-StaffHub</span>
         </a>
 
         <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
@@ -78,7 +78,7 @@
     <ul class="menu-inner py-1">
         {{-- DASHBOARD --}}
         <li class="menu-item">
-            <a href="#" class="menu-link">
+            <a href="{{ route('dashboard') }}" class="menu-link">
                 <i class="menu-icon ri ri-home-4-line"></i>
                 <div>Dashboard</div>
             </a>
