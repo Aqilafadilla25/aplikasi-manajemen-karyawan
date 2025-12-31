@@ -6,11 +6,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Jabatan extends Model
 {
-    protected $fillable = ['nama_jabatan', 'gaji'];
+    protected $fillable = ['division_id', 'nama_jabatan'];
 
-    // 1 Jabatan punya banyak Employee
+    public function division()
+    {
+        return $this->belongsTo(Division::class);
+    }
+
     public function employees()
     {
         return $this->hasMany(Employee::class);
     }
 }
+

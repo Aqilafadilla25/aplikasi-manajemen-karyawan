@@ -2,67 +2,51 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Employee;
+use App\Models\Jabatan;
+use App\Models\Division;
 
 class DashboardController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        if (auth()->user()->role === 'admin') {
+        $user = Auth::user();
+
+        if (!$user) {
+            abort(403);
+        }
+
+        $totalEmployees = Employee::count();
+        $totalJabatans  = Jabatan::count();
+        $totalDivisions = Division::count();
+
+        return view('dashboard.index', compact(
+            'user',
+            'totalEmployees',
+            'totalJabatans',
+            'totalDivisions'
+        ));
+    }
+
+
+
+
+    /**
+     * Dashboard Admin
+     * /admin/dashboard
+     */
+    public function admin()
+    {
         return view('dashboard.admin');
     }
 
-    return view('dashboard.staff');
-    }
-
     /**
-     * Show the form for creating a new resource.
+     * Dashboard Staff
+     * /staff/dashboard
      */
-    public function create()
+    public function staff()
     {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        return view('dashboard.staff');
     }
 }

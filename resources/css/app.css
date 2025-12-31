@@ -9,3 +9,29 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 }
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.menu-item.active > .menu-link {
+    background-color: rgba(105, 108, 255, 0.12);
+    font-weight: 600;
+}
+
+.menu-link i {
+    font-size: 1.2rem;
+}
+
+.sidebar-logo {
+    height: 38px;
+    width: auto;
+    object-fit: contain;
+}
+
+.app-brand {
+    border-bottom: 1px solid #eee;
+}
+
+.app-brand-text {
+    letter-spacing: 0.5px;
+}
