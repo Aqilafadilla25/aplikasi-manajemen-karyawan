@@ -11,8 +11,16 @@ return new class extends Migration
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
 
+            // RELASI KE USERS
+            $table->foreignId('user_id')
+                ->nullable()
+                ->constrained('users')
+                ->onDelete('cascade');
+
             // RELASI KE JABATAN
-            $table->unsignedBigInteger('jabatan_id');
+            $table->foreignId('jabatan_id')
+                ->constrained('jabatans')
+                ->onDelete('cascade');
 
             $table->string('nama');
             $table->text('alamat')->nullable();
@@ -20,12 +28,6 @@ return new class extends Migration
             $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
 
             $table->timestamps();
-
-            // FOREIGN KEY
-            $table->foreign('jabatan_id')
-                ->references('id')
-                ->on('jabatans')
-                ->onDelete('cascade');
         });
     }
 

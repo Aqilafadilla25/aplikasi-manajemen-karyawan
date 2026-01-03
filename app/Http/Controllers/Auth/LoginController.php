@@ -5,13 +5,22 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
     public function showLoginForm()
-    {
-        return view('auth.login');
+{
+    if (auth::check()) {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
     }
+
+    return view('auth.login');
+}
+
 
     public function login(Request $request)
     {
@@ -32,15 +41,29 @@ class LoginController extends Controller
 
     public function logout(Request $request)
     {
-        Auth::guard('web')->logout();
+        Auth::logout();
 
-        // HAPUS SESSION
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        // HAPUS COOKIE REMEMBER ME
-        Auth::logoutOtherDevices('');
+        return redirect()->route('login');
+    }
 
-        return redirect('/login');
+    /**
+     * LOGIN SEBAGAI GUEST (READ ONLY)
+     */
+    public function loginAsGuest()
+    {
+        $guest = User::create([
+            'name'     => 'Guest User',
+            'email'    => 'guest_' . Str::random(6) . '@guest.local',
+            'password' => bcrypt(Str::random(12)),
+            'role'     => 'guest',
+        ]);
+
+        Auth::login($guest);
+        request()->session()->regenerate();
+
+        return redirect()->route('dashboard');
     }
 }

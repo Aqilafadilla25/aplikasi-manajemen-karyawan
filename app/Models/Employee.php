@@ -18,4 +18,13 @@ class Employee extends Model
     {
         return $this->belongsTo(Jabatan::class);
     }
+
+    public function absensis()
+    {
+        return $this->hasMany(Absensi::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

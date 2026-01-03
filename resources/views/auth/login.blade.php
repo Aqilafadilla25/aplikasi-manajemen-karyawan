@@ -53,6 +53,12 @@
                         Login
                     </button>
 
+                    {{-- LOGIN SEBAGAI GUEST --}}
+                    <a href="{{ route('guest.login') }}"
+                        class="btn btn-outline-secondary w-100 mb-3">
+                        Masuk sebagai Guest
+                    </a>
+
                     {{-- LINK REGISTER --}}
                     <p class="text-center mb-0">
                         Belum punya akun?

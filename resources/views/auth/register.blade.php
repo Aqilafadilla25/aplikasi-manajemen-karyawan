@@ -6,17 +6,22 @@
         <div class="card shadow-lg border-0 rounded-4">
             <div class="card-body p-4 p-md-5">
 
+                {{-- LOGO --}}
                 <div class="text-center mb-4">
                     <img
                         src="{{ asset('assets/img/logo/logo_Nasywa2.png') }}"
                         alt="Logo"
-                        style="height:200px; max-width:100%; object-fit:contain;">
+                        style="height:200px; max-width:100%; object-fit:contain;"
+                    >
                 </div>
 
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
 
-                    {{-- NAME --}}
+                    {{-- ROLE (AUTO STAFF) --}}
+                    <input type="hidden" name="role" value="staff">
+
+                    {{-- NAMA --}}
                     <div class="mb-3">
                         <label class="form-label">Nama Lengkap</label>
                         <input
@@ -24,10 +29,10 @@
                             name="name"
                             class="form-control @error('name') is-invalid @enderror"
                             value="{{ old('name') }}"
-                            required>
-
+                            required
+                        >
                         @error('name')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -39,10 +44,10 @@
                             name="email"
                             class="form-control @error('email') is-invalid @enderror"
                             value="{{ old('email') }}"
-                            required>
-
+                            required
+                        >
                         @error('email')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -53,21 +58,22 @@
                             type="password"
                             name="password"
                             class="form-control @error('password') is-invalid @enderror"
-                            required>
-
+                            required
+                        >
                         @error('password')
-                        <div class="invalid-feedback">{{ $message }}</div>
+                            <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
-                    {{-- CONFIRM PASSWORD --}}
-                    <div class="mb-3">
+                    {{-- KONFIRMASI PASSWORD --}}
+                    <div class="mb-4">
                         <label class="form-label">Konfirmasi Password</label>
                         <input
                             type="password"
                             name="password_confirmation"
                             class="form-control"
-                            required>
+                            required
+                        >
                     </div>
 
                     {{-- BUTTON --}}
@@ -82,7 +88,6 @@
                             Login di sini
                         </a>
                     </p>
-
                 </form>
 
             </div>

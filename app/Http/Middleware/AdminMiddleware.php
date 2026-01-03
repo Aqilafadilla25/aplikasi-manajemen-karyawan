@@ -8,10 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
-    public function handle(Request $request, Closure $next)
+    public function handle($request, Closure $next)
     {
         if (!Auth::check() || Auth::user()->role !== 'admin') {
-            abort(403);
+            abort(403, 'Akses hanya untuk Admin');
         }
 
         return $next($request);

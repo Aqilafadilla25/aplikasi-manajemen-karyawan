@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use App\Models\Employee;
 
 class RegisterController extends Controller
 {
@@ -17,23 +17,21 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        $data = $request->validate([
-            'name'     => 'required|string|max:255',
-            'email'    => 'required|email|unique:users',
-            'password' => 'required|min:6|confirmed',
-            'role'     => 'required|in:admin,staff,guest',
-        ]);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'role' => 'guest' // DEFAULT
+            'role' => 'staff',
         ]);
 
+        Employee::create([
+            'user_id' => $user->id,
+            'jabatan_id' => 1, // default
+            'nama' => $user->name,
+            'status' => 'aktif',
+        ]);
 
         Auth::login($user);
-
         return redirect()->route('dashboard');
     }
 }

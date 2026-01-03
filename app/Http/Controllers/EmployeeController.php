@@ -52,4 +52,9 @@ class EmployeeController extends Controller
         $employee->delete();
         return back();
     }
+
+    public function show(Employee $employee)
+    {
+        return view('employees.show', compact('employee'));
+    }
 }
