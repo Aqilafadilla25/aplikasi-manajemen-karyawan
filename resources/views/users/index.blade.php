@@ -12,11 +12,30 @@
         </a>
     </div>
 
-    <form class="mb-3" method="GET">
+    <form method="GET" class="row g-2 mb-3">
+
+    <div class="col-md-4">
         <input type="text" name="search" class="form-control"
             placeholder="Cari nama atau email..."
             value="{{ $search }}">
-    </form>
+    </div>
+
+    <div class="col-md-3">
+        <select name="role" class="form-select">
+            <option value="">Semua Role</option>
+            <option value="admin" {{ request('role') == 'admin' ? 'selected' : '' }}>Admin</option>
+            <option value="staff" {{ request('role') == 'staff' ? 'selected' : '' }}>Staff</option>
+            <option value="guest" {{ request('role') == 'guest' ? 'selected' : '' }}>Guest</option>
+        </select>
+    </div>
+
+    <div class="col-md-3 d-flex gap-2">
+        <button class="btn btn-primary btn-sm">Filter</button>
+        <a href="{{ route('users.index') }}" class="btn btn-secondary btn-sm">Reset</a>
+    </div>
+
+</form>
+
 
     @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>

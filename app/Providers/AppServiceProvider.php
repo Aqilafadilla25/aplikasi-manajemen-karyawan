@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
+use App\Models\Leave;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-
+use Illuminate\Support\Facades\View;
+use Illuminate\Support\Facades\Auth;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,6 +23,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        View::composer('*', function ($view) {
+        if (auth::check() && auth::user()->role === 'admin') {
+            $pendingLeavesCount = Leave::where('status', 'pending')->count();
+            $view->with('pendingLeavesCount', $pendingLeavesCount);
+        }
+    });
     }
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Employee extends Model
 {
     protected $fillable = [
+        'user_id',        // ⬅️ WAJIB
         'jabatan_id',
         'nama',
         'alamat',
@@ -23,8 +24,14 @@ class Employee extends Model
     {
         return $this->hasMany(Absensi::class);
     }
+
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+    
+    public function salaries()
+    {
+        return $this->hasMany(Salary::class);
     }
 }

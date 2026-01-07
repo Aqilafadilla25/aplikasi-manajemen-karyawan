@@ -9,10 +9,12 @@
             {{-- AVATAR --}}
             <div class="avatar avatar-online">
                 <img
-                    src="{{ asset('assets/img/avatars/1.png') }}"
-                    alt="avatar"
-                    class="rounded-circle"
-                    width="40">
+                    src="{{ auth()->user()->photo
+        ? asset('storage/' . auth()->user()->photo)
+        : asset('assets/img/avatars/1.png') }}"
+                    alt="Avatar"
+                    class="avatar-img" />
+
             </div>
 
             {{-- USER INFO --}}

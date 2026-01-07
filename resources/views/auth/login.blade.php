@@ -7,10 +7,12 @@
             <div class="card-body p-4 p-md-5">
 
                 <div class="text-center mb-4">
-                    <img
-                        src="{{ asset('assets/img/logo/logo_Nasywa2.png') }}"
-                        alt="Logo"
-                        style="height:200px; max-width:100%; object-fit:contain;">
+                    <a href="{{ route('landing') }}">
+                        <img
+                            src="{{ asset('assets/img/logo/logo_Nasywa2.png') }}"
+                            alt="Logo"
+                            style="height:200px; max-width:100%; object-fit:contain;">
+                    </a>
                 </div>
 
                 <form method="POST" action="{{ route('login') }}">
@@ -52,12 +54,6 @@
                     <button type="submit" class="btn btn-primary w-100 mb-3">
                         Login
                     </button>
-
-                    {{-- LOGIN SEBAGAI GUEST --}}
-                    <a href="{{ route('guest.login') }}"
-                        class="btn btn-outline-secondary w-100 mb-3">
-                        Masuk sebagai Guest
-                    </a>
 
                     {{-- LINK REGISTER --}}
                     <p class="text-center mb-0">

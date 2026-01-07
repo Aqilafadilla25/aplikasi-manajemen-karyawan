@@ -8,11 +8,12 @@
 
                 {{-- LOGO --}}
                 <div class="text-center mb-4">
-                    <img
-                        src="{{ asset('assets/img/logo/logo_Nasywa2.png') }}"
-                        alt="Logo"
-                        style="height:200px; max-width:100%; object-fit:contain;"
-                    >
+                    <a href="{{ route('landing') }}">
+                        <img
+                            src="{{ asset('assets/img/logo/logo_Nasywa2.png') }}"
+                            alt="Logo"
+                            style="height:200px; max-width:100%; object-fit:contain;">
+                    </a>
                 </div>
 
                 <form method="POST" action="{{ route('register') }}">
@@ -29,10 +30,9 @@
                             name="name"
                             class="form-control @error('name') is-invalid @enderror"
                             value="{{ old('name') }}"
-                            required
-                        >
+                            required>
                         @error('name')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -44,10 +44,9 @@
                             name="email"
                             class="form-control @error('email') is-invalid @enderror"
                             value="{{ old('email') }}"
-                            required
-                        >
+                            required>
                         @error('email')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -58,10 +57,9 @@
                             type="password"
                             name="password"
                             class="form-control @error('password') is-invalid @enderror"
-                            required
-                        >
+                            required>
                         @error('password')
-                            <div class="invalid-feedback">{{ $message }}</div>
+                        <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
 
@@ -72,8 +70,7 @@
                             type="password"
                             name="password_confirmation"
                             class="form-control"
-                            required
-                        >
+                            required>
                     </div>
 
                     {{-- BUTTON --}}

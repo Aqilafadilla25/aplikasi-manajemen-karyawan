@@ -14,8 +14,6 @@
         </p>
     </div>
 
-    {{-- ================= ADMIN & STAFF ================= --}}
-    @if(in_array($user->role, ['admin', 'staff','guest']))
     <div class="row g-4">
 
         <div class="col-md-4">
@@ -80,8 +78,6 @@
     </div>
 
 </div>
-
-    @endif
 
     {{-- ================= INFO ================= --}}
     <div class="row mt-4">
