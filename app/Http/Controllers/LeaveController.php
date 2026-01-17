@@ -17,6 +17,12 @@ class LeaveController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'tanggal_mulai' => 'required|date',
+            'tanggal_selesai' => 'required|date|after_or_equal:tanggal_mulai',
+            'alasan' => 'required|string',
+        ]);
+
         Leave::create([
             'user_id' => Auth::id(),
             'tanggal_mulai' => $request->tanggal_mulai,

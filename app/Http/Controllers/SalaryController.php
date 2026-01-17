@@ -30,7 +30,8 @@ class SalaryController extends Controller
             'tunjangan'   => $request->tunjangan,
             'potongan'    => $request->potongan,
             'total_gaji'  => $request->gaji_pokok + $request->tunjangan - $request->potongan,
-            'bulan'       => $request->bulan,
+            'bulan' => $request->bulan . '-01',
+
         ]);
 
         return redirect()->route('salaries.index');

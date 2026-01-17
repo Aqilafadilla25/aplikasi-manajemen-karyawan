@@ -15,12 +15,12 @@
                 <div class="row">
                     <div class="col-md-6 mb-2">
                         <label class="form-label">Tanggal Mulai</label>
-                        <input type="date" name="tanggal_mulai" class="form-control" required>
+                        <input type="date" name="tanggal_mulai" class="form-control" required id="tanggal_mulai">
                     </div>
 
                     <div class="col-md-6 mb-2">
                         <label class="form-label">Tanggal Selesai</label>
-                        <input type="date" name="tanggal_selesai" class="form-control" required>
+                        <input type="date" name="tanggal_selesai" class="form-control" required id="tanggal_selesai">
                     </div>
                 </div>
 
@@ -74,4 +74,17 @@
         box-shadow: 0 10px 20px rgba(0,0,0,0.12);
     }
 </style>
+@endpush
+
+@push('scripts')
+<script>
+    document.getElementById('tanggal_mulai').addEventListener('change', function() {
+        var startDate = this.value;
+        var endDateInput = document.getElementById('tanggal_selesai');
+        endDateInput.min = startDate;
+        if (endDateInput.value && endDateInput.value < startDate) {
+            endDateInput.value = startDate;
+        }
+    });
+</script>
 @endpush

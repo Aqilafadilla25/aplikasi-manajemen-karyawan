@@ -22,7 +22,7 @@
             @foreach($absensis as $a)
             <tr>
                 <td>{{ $a->employee->nama }}</td>
-                <td>{{ $a->employee->jabatan->nama }}</td>
+                <td>{{ $a->employee->jabatan->nama_jabatan ?? '-' }}</td>
                 <td>{{ $a->tanggal }}</td>
                 <td>{{ $a->jam_masuk ?? '-' }}</td>
                 <td>{{ $a->jam_keluar ?? '-' }}</td>
